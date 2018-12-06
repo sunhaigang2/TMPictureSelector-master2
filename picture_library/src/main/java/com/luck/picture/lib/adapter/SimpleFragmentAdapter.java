@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
@@ -17,6 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.luck.picture.lib.PicturePreviewActivity;
 import com.luck.picture.lib.PictureVideoPlayActivity;
 import com.luck.picture.lib.R;
 import com.luck.picture.lib.config.PictureConfig;
@@ -28,6 +31,7 @@ import com.luck.picture.lib.widget.longimage.ImageSource;
 import com.luck.picture.lib.widget.longimage.ImageViewState;
 import com.luck.picture.lib.widget.longimage.SubsamplingScaleImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +44,13 @@ public class SimpleFragmentAdapter extends PagerAdapter {
     private List<LocalMedia> images;
     private Context mContext;
     private OnCallBackActivity onBackPressed;
+    private CheckedChangedListener checkedChangedListener;
+
+    public void setCheckedChanged(CheckedChangedListener
+                                          checkedChangedListener) {
+        this.checkedChangedListener = checkedChangedListener;
+    }
+
 
     public interface OnCallBackActivity {
         /**
@@ -75,17 +86,28 @@ public class SimpleFragmentAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         final View contentView = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.picture_image_preview, container, false);
         // 常规图控件
         final PhotoView imageView = (PhotoView) contentView.findViewById(R.id.preview_image);
         // 长图控件
         final SubsamplingScaleImageView longImg = (SubsamplingScaleImageView) contentView.findViewById(R.id.longImg);
-
+        final LinearLayout ll_check = (LinearLayout) contentView.findViewById(R.id.ll_check);
+        final TextView check = (TextView) contentView.findViewById(R.id.check);
         ImageView iv_play = (ImageView) contentView.findViewById(R.id.iv_play);
+
+        ll_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocalMedia media = images.get(position);
+                check.setSelected(!checkedChangedListener.isSelected2(media));
+                checkedChangedListener.CheckedChanged();
+            }
+        });
         LocalMedia media = images.get(position);
         if (media != null) {
+            check.setSelected(checkedChangedListener.isSelected2(media));
             final String pictureType = media.getPictureType();
             boolean eqVideo = pictureType.startsWith(PictureConfig.VIDEO);
             iv_play.setVisibility(eqVideo ? View.VISIBLE : View.GONE);
@@ -179,4 +201,13 @@ public class SimpleFragmentAdapter extends PagerAdapter {
         longImg.setDoubleTapZoomDpi(SubsamplingScaleImageView.ZOOM_FOCUS_CENTER);
         longImg.setImage(ImageSource.cachedBitmap(bmp), new ImageViewState(0, new PointF(0, 0), 0));
     }
+
+    public interface CheckedChangedListener {
+       //选中按钮
+        void CheckedChanged();
+
+        boolean isSelected2(LocalMedia image);
+    }
+
+
 }

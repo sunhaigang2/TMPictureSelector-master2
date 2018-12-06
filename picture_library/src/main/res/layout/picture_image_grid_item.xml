@@ -9,8 +9,9 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/image_placeholder" />
-   <!-- <LinearLayout
-        android:id="@+id/ll_check"
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_check1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
@@ -26,7 +27,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="12sp" />
-    </LinearLayout>-->
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_check"
         android:layout_width="40dp"
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/channellist_search_icon_pressed"
             android:gravity="center"
-             />
+            />
     </LinearLayout>
 
     <TextView

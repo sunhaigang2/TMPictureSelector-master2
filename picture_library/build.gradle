@@ -1,7 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-
-group='com.github.sunhaigang2'
 
 android {
     compileSdkVersion 27
@@ -22,13 +19,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':ucrop')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':ucrop')
     //noinspection GradleCompatible
-    implementation "com.android.support:appcompat-v7:27.1.0"
+    compile "com.android.support:appcompat-v7:27.1.0"
     //noinspection GradleCompatible
-    implementation "com.android.support:recyclerview-v7:27.1.0"
-    implementation "com.github.bumptech.glide:glide:4.6.1"
-    implementation "io.reactivex.rxjava2:rxjava:2.0.5"
-    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    compile "com.android.support:recyclerview-v7:27.1.0"
+    compile "com.github.bumptech.glide:glide:4.6.1"
+    compile "io.reactivex.rxjava2:rxjava:2.0.5"
+    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
 }

@@ -78,6 +78,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
     //新加的
     private TextView selector_picture_num,selector_finish;
     private ImageView camera;
+    private ImageView video;
     private LinearLayout linearLayout;
     private RelativeLayout relativeLayout;
     //private RelativeLayout rl_picture_title;
@@ -198,9 +199,10 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
     private void initView(Bundle savedInstanceState) {
         linearLayout=(LinearLayout)findViewById(R.id.ll);
         relativeLayout=(RelativeLayout)findViewById(R.id.rl);
-        selector_finish=(TextView)findViewById(R.id.id_ll_ok);
+        selector_finish=(TextView)findViewById(R.id.id_tv_ok);
         selector_picture_num=(TextView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_selector_picture_num);
         camera=(ImageView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_camera);
+        //video=findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_video);
         //rl_picture_title = (RelativeLayout) findViewById(R.id.rl_picture_title);
         picture_left_back = (ImageView) findViewById(R.id.picture_left_back);
         picture_title = (TextView) findViewById(R.id.picture_title);
@@ -216,18 +218,20 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             popupWindow = new PhotoPopupWindow(this);
             popupWindow.setOnItemClickListener(this);
         }
-        picture_id_preview.setOnClickListener(this);
+        //picture_id_preview.setOnClickListener(this);
         if (config.mimeType == PictureMimeType.ofAudio()) {
-            picture_id_preview.setVisibility(View.GONE);
+            //picture_id_preview.setVisibility(View.GONE);
             audioH = ScreenUtils.getScreenHeight(mContext)
                     + ScreenUtils.getStatusBarHeight(mContext);
         } else {
-            picture_id_preview.setVisibility(config.mimeType == PictureConfig.TYPE_VIDEO
-                    ? View.GONE : View.VISIBLE);
+            //picture_id_preview.setVisibility(config.mimeType == PictureConfig.TYPE_VIDEO ? View.GONE : View.VISIBLE);
         }
         picture_left_back.setOnClickListener(this);
-        picture_right.setOnClickListener(this);
-        id_ll_ok.setOnClickListener(this);
+        //picture_right.setOnClickListener(this);
+        //id_ll_ok.setOnClickListener(this);
+        camera.setOnClickListener(this);
+       // video.setOnClickListener(this);
+        selector_finish.setOnClickListener(this);
         picture_title.setOnClickListener(this);
         String title = config.mimeType == PictureMimeType.ofAudio() ?
                 getString(R.string.picture_all_audio)
@@ -284,6 +288,17 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         if (config.isCamera) {
             config.isCamera = StringUtils.isCamera(titleText);
         }
+        switch (config.mimeType) {
+            case PictureConfig.TYPE_IMAGE:
+                // 拍照
+                camera.setImageDrawable(getDrawable(R.drawable.share_camera_normal));
+                break;
+            case PictureConfig.TYPE_VIDEO:
+                // 录视频
+                camera.setImageDrawable(getDrawable(R.drawable.ic_post_pick_video));
+                break;
+
+        }
     }
 
     @Override
@@ -299,9 +314,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
      * none number style
      */
     private void isNumComplete(boolean numComplete) {
-        picture_tv_ok.setText(numComplete ? getString(R.string.picture_done_front_num,
-                0, config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum)
-                : getString(R.string.picture_please_select));
+        //picture_tv_ok.setText(numComplete ? getString(R.string.picture_done_front_num, 0, config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum) : getString(R.string.picture_please_select));
         if (!numComplete) {
             animation = AnimationUtils.loadAnimation(this, R.anim.modal_in);
         }
@@ -463,6 +476,33 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        if (id == R.id.zl01xsq_yrpwr_picture_selector_activity_camera ) {
+                    rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                            .subscribe(new Observer<Boolean>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+                                }
+
+                                @Override
+                                public void onNext(Boolean aBoolean) {
+                                    if (aBoolean) {
+                                        onTakePhoto();
+                                    } else {
+                                        ToastManage.s(mContext, getString(R.string.picture_camera));
+                                        closeActivity();
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                }
+
+                                @Override
+                                public void onComplete() {
+                                }
+                            });
+
+        }
         if (id == R.id.picture_left_back ) {
             if (folderWindow.isShowing()) {
                 folderWindow.dismiss();
@@ -498,7 +538,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
 //            overridePendingTransition(R.anim.a5, 0);
 //        }
 
-        if (id == R.id.id_ll_ok) {
+        if (id == R.id.id_tv_ok) {
             List<LocalMedia> images = adapter.getSelectedImages();
             LocalMedia image = images.size() > 0 ? images.get(0) : null;
             String pictureType = image != null ? image.getPictureType() : "";
@@ -848,42 +888,40 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         String pictureType = selectImages.size() > 0
                 ? selectImages.get(0).getPictureType() : "";
         if (config.mimeType == PictureMimeType.ofAudio()) {
-            picture_id_preview.setVisibility(View.GONE);
+            //picture_id_preview.setVisibility(View.GONE);
         } else {
             boolean isVideo = PictureMimeType.isVideo(pictureType);
             boolean eqVideo = config.mimeType == PictureConfig.TYPE_VIDEO;
-            picture_id_preview.setVisibility(isVideo || eqVideo ? View.GONE : View.VISIBLE);
+            //picture_id_preview.setVisibility(isVideo || eqVideo ? View.GONE : View.VISIBLE);
         }
         boolean enable = selectImages.size() != 0;
         if (enable) {
-            id_ll_ok.setEnabled(true);
-            picture_id_preview.setEnabled(true);
-            picture_id_preview.setSelected(true);
-            picture_tv_ok.setSelected(true);
+            //id_ll_ok.setEnabled(true);
+            //picture_id_preview.setEnabled(true);
+            //picture_id_preview.setSelected(true);
+            //picture_tv_ok.setSelected(true);
             if (numComplete) {
-                picture_tv_ok.setText(getString
-                        (R.string.picture_done_front_num, selectImages.size(),
-                                config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum));
+                //picture_tv_ok.setText(getString(R.string.picture_done_front_num, selectImages.size(),config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum));
             } else {
                 if (!anim) {
                     selector_picture_num.startAnimation(animation);
                 }
                 //selector_picture_num.setVisibility(View.VISIBLE);
                 selector_picture_num.setText(String.valueOf(selectImages.size()));
-                picture_tv_ok.setText(getString(R.string.picture_completed));
+                //picture_tv_ok.setText(getString(R.string.picture_completed));
                 anim = false;
             }
         } else {
-            id_ll_ok.setEnabled(false);
-            picture_id_preview.setEnabled(false);
-            picture_id_preview.setSelected(false);
-            picture_tv_ok.setSelected(false);
+            //id_ll_ok.setEnabled(false);
+            //picture_id_preview.setEnabled(false);
+            //picture_id_preview.setSelected(false);
+            //picture_tv_ok.setSelected(false);
             if (numComplete) {
-                picture_tv_ok.setText(getString(R.string.picture_done_front_num, 0,
-                        config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum));
+                //picture_tv_ok.setText(getString(R.string.picture_done_front_num, 0,config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum));
             } else {
                 //selector_picture_num.setVisibility(View.INVISIBLE);
-                picture_tv_ok.setText(getString(R.string.picture_please_select));
+                selector_picture_num.setText("0");
+                //picture_tv_ok.setText(getString(R.string.picture_please_select));
             }
         }
     }

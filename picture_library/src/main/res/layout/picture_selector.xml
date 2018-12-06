@@ -49,7 +49,7 @@
             android:layout_alignBottom="@+id/picture_title"
             />
         <TextView
-            android:id="@+id/id_ll_ok"
+            android:id="@+id/id_tv_ok"
             android:textSize="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -175,12 +175,22 @@
             android:layout_height="wrap_content"
             android:text="/9"
             />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/zl01xsq_yrpwr_picture_selector_activity_video"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_post_pick_video"
+            />
 
         <ImageView
             android:id="@+id/zl01xsq_yrpwr_picture_selector_activity_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="1dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/share_camera_normal"
