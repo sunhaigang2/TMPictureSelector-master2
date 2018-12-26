@@ -48,9 +48,9 @@ import com.luck.picture.lib.tools.StringUtils;
 import com.luck.picture.lib.tools.ToastManage;
 import com.luck.picture.lib.widget.FolderPopWindow;
 import com.luck.picture.lib.widget.PhotoPopupWindow;
-import com.yalantis.ucrop.UCrop;
-import com.yalantis.ucrop.UCropMulti;
-import com.yalantis.ucrop.model.CutInfo;
+import com.yalantis.ucrop2.UCrop;
+import com.yalantis.ucrop2.UCropMulti;
+import com.yalantis.ucrop2.model.CutInfo;
 
 import java.io.File;
 import java.io.Serializable;

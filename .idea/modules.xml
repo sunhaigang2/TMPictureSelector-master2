@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PictureSelector.iml" filepath="$PROJECT_DIR$/PictureSelector.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\TMPictureSelector-master2\PictureSelector.iml" filepath="D:\AndroidStudioProjects\TMPictureSelector-master2\PictureSelector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TMPictureSelector-master2.iml" filepath="$PROJECT_DIR$/TMPictureSelector-master2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\TMPictureSelector-master2\app\app.iml" filepath="D:\AndroidStudioProjects\TMPictureSelector-master2\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/picture_library/picture_library.iml" filepath="$PROJECT_DIR$/picture_library/picture_library.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\TMPictureSelector-master2\picture_library\picture_library.iml" filepath="D:\AndroidStudioProjects\TMPictureSelector-master2\picture_library\picture_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/ucrop/ucrop.iml" filepath="$PROJECT_DIR$/ucrop/ucrop.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\TMPictureSelector-master2\ucrop\ucrop.iml" filepath="D:\AndroidStudioProjects\TMPictureSelector-master2\ucrop\ucrop.iml" />
     </modules>
   </component>
 </project>

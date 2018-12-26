@@ -29,8 +29,8 @@ import com.luck.picture.lib.tools.AttrsUtils;
 import com.luck.picture.lib.tools.DateUtils;
 import com.luck.picture.lib.tools.DoubleUtils;
 import com.luck.picture.lib.tools.PictureFileUtils;
-import com.yalantis.ucrop.UCrop;
-import com.yalantis.ucrop.UCropMulti;
+import com.yalantis.ucrop2.UCrop;
+import com.yalantis.ucrop2.UCropMulti;
 
 import java.io.File;
 import java.util.ArrayList;

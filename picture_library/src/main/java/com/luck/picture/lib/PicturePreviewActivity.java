@@ -26,9 +26,9 @@ import com.luck.picture.lib.tools.ScreenUtils;
 import com.luck.picture.lib.tools.ToastManage;
 import com.luck.picture.lib.tools.VoiceUtils;
 import com.luck.picture.lib.widget.PreviewViewPager;
-import com.yalantis.ucrop.UCrop;
-import com.yalantis.ucrop.UCropMulti;
-import com.yalantis.ucrop.model.CutInfo;
+import com.yalantis.ucrop2.UCrop;
+import com.yalantis.ucrop2.UCropMulti;
+import com.yalantis.ucrop2.model.CutInfo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
