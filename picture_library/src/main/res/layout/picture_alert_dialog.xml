@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="15dp">
 
-    <com.luck.picture.lib.dialog.PictureSpinView
+    <com.luck.picture.lib2.dialog.PictureSpinView
         android:layout_width="30dp"
         android:layout_height="30dp" />
 

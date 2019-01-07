@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.permissions.RxPermissions;
-import com.luck.picture.lib.tools.PictureFileUtils;
+import com.luck.picture.lib2.config.PictureConfig;
+import com.luck.picture.lib2.permissions.RxPermissions;
+import com.luck.picture.lib2.tools.PictureFileUtils;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;

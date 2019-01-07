@@ -101,7 +101,7 @@
     </RelativeLayout>
 
 
-    <com.luck.picture.lib.widget.PreviewViewPager
+    <com.luck.picture.lib2.widget.PreviewViewPager
         android:id="@+id/preview_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

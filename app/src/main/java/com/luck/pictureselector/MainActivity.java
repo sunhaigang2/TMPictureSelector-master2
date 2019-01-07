@@ -17,12 +17,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.permissions.RxPermissions;
-import com.luck.picture.lib.tools.PictureFileUtils;
+import com.luck.picture.lib2.PictureSelector;
+import com.luck.picture.lib2.config.PictureConfig;
+import com.luck.picture.lib2.config.PictureMimeType;
+import com.luck.picture.lib2.entity.LocalMedia;
+import com.luck.picture.lib2.permissions.RxPermissions;
+import com.luck.picture.lib2.tools.PictureFileUtils;
 import com.luck.pictureselector.adapter.GridImageAdapter;
 
 import java.io.File;
