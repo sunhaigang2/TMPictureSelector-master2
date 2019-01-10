@@ -76,7 +76,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             picture_tv_img_num, picture_id_preview, tv_PlayPause, tv_Stop, tv_Quit,
             tv_musicStatus, tv_musicTotal, tv_musicTime;
     //新加的
-    private TextView selector_picture_num,selector_finish;
+    private TextView selector_picture_num,selector_picture_total_num,selector_finish;
     private ImageView camera;
     private ImageView video;
     private LinearLayout linearLayout;
@@ -201,6 +201,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         relativeLayout=(RelativeLayout)findViewById(R.id.rl);
         selector_finish=(TextView)findViewById(R.id.id_tv_ok);
         selector_picture_num=(TextView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_selector_picture_num);
+        selector_picture_total_num=(TextView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_selector_picture_total_num);
         camera=(ImageView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_camera);
         //video=findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_video);
         //rl_picture_title = (RelativeLayout) findViewById(R.id.rl_picture_title);
@@ -1085,6 +1086,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
     private void singleRadioMediaImage() {
         if (adapter != null) {
             List<LocalMedia> selectImages = adapter.getSelectedImages();
+            selector_picture_total_num.setText("1");
             if (selectImages != null
                     && selectImages.size() > 0) {
                 selectImages.clear();

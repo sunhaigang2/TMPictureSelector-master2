@@ -170,6 +170,7 @@
         <TextView
             android:layout_toRightOf="@+id/zl01xsq_yrpwr_picture_selector_activity_selector_picture_num"
             android:textSize="16dp"
+            android:id="@+id/zl01xsq_yrpwr_picture_selector_activity_selector_picture_total_num"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

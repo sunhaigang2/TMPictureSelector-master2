@@ -44,7 +44,7 @@ import java.util.List;
 public class PicturePreviewActivity extends PictureBaseActivity implements
         View.OnClickListener, Animation.AnimationListener, SimpleFragmentAdapter.OnCallBackActivity, SimpleFragmentAdapter.CheckedChangedListener {
     private ImageView picture_left_back;
-    private TextView tv_img_num, tv_title, tv_ok;
+    private TextView tv_img_num, tv_img_total_num,tv_title, tv_ok;
     private PreviewViewPager viewPager;
     private LinearLayout id_ll_ok;
     private int position;
@@ -102,12 +102,14 @@ public class PicturePreviewActivity extends PictureBaseActivity implements
         //id_ll_ok.setOnClickListener(this);
         tv_ok.setOnClickListener(this);
         tv_img_num = (TextView) findViewById(R.id.tv_img_num);
+        tv_img_total_num=(TextView) findViewById(R.id.tv_img_total_num);
         tv_title = (TextView) findViewById(R.id.picture_title);
         position = getIntent().getIntExtra(PictureConfig.EXTRA_POSITION, 0);
         //tv_ok.setText(numComplete ? getString(R.string.picture_done_front_num, 0, config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum) : getString(R.string.picture_please_select));
 
         //tv_img_num.setSelected(config.checkNumMode ? true : false);
-
+//        tv_img_total_num=(List<LocalMedia>) getIntent().
+//                getSerializableExtra(PictureConfig.EXTRA_SELECT_LIST);
         selectImages = (List<LocalMedia>) getIntent().
                 getSerializableExtra(PictureConfig.EXTRA_SELECT_LIST);
         boolean is_bottom_preview = getIntent().
