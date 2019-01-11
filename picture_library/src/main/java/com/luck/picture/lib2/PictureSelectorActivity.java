@@ -228,9 +228,9 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
             //picture_id_preview.setVisibility(config.mimeType == PictureConfig.TYPE_VIDEO ? View.GONE : View.VISIBLE);
         }
         if (config.maxSelectNum == 9){
-            selector_picture_total_num.setText("9");
+            selector_picture_total_num.setText("/9");
         }else{
-            selector_picture_total_num.setText("1");
+            selector_picture_total_num.setText("/1");
         }
 
 
