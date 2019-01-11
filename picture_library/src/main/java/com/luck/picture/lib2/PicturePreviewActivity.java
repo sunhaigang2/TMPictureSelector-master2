@@ -108,8 +108,11 @@ public class PicturePreviewActivity extends PictureBaseActivity implements
         //tv_ok.setText(numComplete ? getString(R.string.picture_done_front_num, 0, config.selectionMode == PictureConfig.SINGLE ? 1 : config.maxSelectNum) : getString(R.string.picture_please_select));
 
         //tv_img_num.setSelected(config.checkNumMode ? true : false);
-//        tv_img_total_num=(List<LocalMedia>) getIntent().
-//                getSerializableExtra(PictureConfig.EXTRA_SELECT_LIST);
+        if (config.maxSelectNum == 9){
+            tv_img_total_num.setText("/9");
+        }else{
+            tv_img_total_num.setText("/1");
+        }
         selectImages = (List<LocalMedia>) getIntent().
                 getSerializableExtra(PictureConfig.EXTRA_SELECT_LIST);
         boolean is_bottom_preview = getIntent().
