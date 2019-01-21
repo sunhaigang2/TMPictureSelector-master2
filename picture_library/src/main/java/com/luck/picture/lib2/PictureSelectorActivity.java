@@ -203,7 +203,7 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
         selector_picture_num=(TextView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_selector_picture_num);
         selector_picture_total_num=(TextView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_selector_picture_total_num);
         camera=(ImageView)findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_camera);
-        //video=findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_video);
+        video=findViewById(R.id.zl01xsq_yrpwr_picture_selector_activity_video);
         //rl_picture_title = (RelativeLayout) findViewById(R.id.rl_picture_title);
         picture_left_back = (ImageView) findViewById(R.id.picture_left_back);
         picture_title = (TextView) findViewById(R.id.picture_title);
@@ -865,13 +865,13 @@ public class PictureSelectorActivity extends PictureBaseActivity implements View
                 break;
             case PictureConfig.TYPE_VIDEO:
                 // video
-                if (config.selectionMode == PictureConfig.SINGLE) {
-                    result.add(media);
-                    onResult(result);
-                } else {
+//                if (config.selectionMode == PictureConfig.SINGLE) {
+//                    result.add(media);
+//                    onResult(result);
+//                } else {
                     bundle.putString("video_path", media.getPath());
                     startActivity(PictureVideoPlayActivity.class, bundle);
-                }
+//                }
                 break;
             case PictureConfig.TYPE_AUDIO:
                 // audio
