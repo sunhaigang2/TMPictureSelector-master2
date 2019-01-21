@@ -88,3 +88,5 @@ exit /b 1
 if "%OS%"=="Windows_NT" endlocal
 
 :omega
+
+yes | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;26.0.2"
